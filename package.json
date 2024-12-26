@@ -4,7 +4,7 @@
   "description": "Server side rendering application with MongoDB",
   "main": "index.js",
   "scripts": {
-    "start": "node index.js",
+    "start": "nodemon index.js",
     "populate": "node populate.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },

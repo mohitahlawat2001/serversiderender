@@ -30,7 +30,7 @@ app.get('/api/products', async (req, res) => {
     try {
         // 1. Pagination parameters
         const page = parseInt(req.query.page) || 1;
-        const limit = parseInt(req.query.limit) || 10;
+        const limit = parseInt(req.query.limit) || 100;
         const skip = (page - 1) * limit;
 
         // 2. Sorting parameters
@@ -75,7 +75,7 @@ app.get('/api/products', async (req, res) => {
                         _id: `$${req.query.groupBy}`,
                         count: { $sum: 1 },
                         totalPrice: { $sum: '$price' },
-                        avgPrice: { $avg: '$price' }
+                        products: { $push: '$$ROOT' }
                     }
                 }
             ]);
